@@ -1,0 +1,44 @@
+#include "$OFFLINEEVENTLOOPMGRROOT/share/OfflineEventLoopMgr_Option.txt"
+
+//**************job options for generator (KKMC)************************
+#include "$KKMCROOT/share/jobOptions_KKMC.txt"
+KKMC.CMSEnergy = 4.3582;
+KKMC.BeamEnergySpread = 0.0011;
+KKMC.NumberOfEventPrinted = 1;
+KKMC.GeneratePsi4260 = true;
+KKMC.ParticleDecayThroughEvtGen = true;
+KKMC.ThresholdCut = 4.0205;
+KKMC.RadiationCorrection = 1;
+//KKMC.TagISR = 1;
+KKMC.TagFSR = 1;
+KKMC.ModeIndexExpXS = -2;
+KKMC.IHVP = 1;
+
+//**************job options for EvtGen************************
+#include "$BESEVTGENROOT/share/BesEvtGen.txt"
+EvtDecay.userDecayTableName = "psi4260_D_D_PI_PI.dec";
+EvtDecay.PdtTableDir = "pdt_703p01.table";
+EvtDecay.statDecays = true;
+
+//**************job options for random number************************
+BesRndmGenSvc.RndmSeed = 3020025;
+
+//**************job options for detector simulation******************
+#include "$BESSIMROOT/share/G4Svc_BesSim.txt"
+
+//configure for calibration constants
+#include "$CALIBSVCROOT/share/calibConfig_sim.txt"
+
+// run ID
+RealizationSvc.RunIdList = {-30616, 0, -31279};
+
+#include "$ROOTIOROOT/share/jobOptions_Digi2Root.txt"
+RootCnvSvc.digiRootOutputFile = "Sig_D_D_PI_PI_4360.rtraw";
+
+// OUTPUT PRINTOUT LEVEL
+// Set output level threshold (2=DEBUG, 3=INFO, 4=WARNING, 5=ERROR, 6=FATAL )
+MessageSvc.OutputLevel  = 5;
+
+// Number of events to be processed (default is 10)
+ApplicationMgr.EvtMax = 500;
+
