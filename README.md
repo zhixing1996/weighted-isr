@@ -21,8 +21,9 @@ Python Version: python3.x
     3. truth: m_truth in MC truth;
     4. event: m_truth in samples after selection (wrong combination events have been removed)
     5. samples_info: corresponding samples information.
-        1. KKMC: for m_m_truth, the FSR photons other than those from psi(4260) (Particle ID: 9030443) have to be added;
-        2. ConExc: for m_m_truth, can be recognized as gamma* (Particle ID: 90022);
+    6. P.S.: how to get m_truth?
+        1. KKMC: for m_truth, the FSR photons other than those from psi(4260) (Particle ID: 9030443) have to be added;
+        2. ConExc: for m_truth, can be recognized as gamma* (Particle ID: 90022);
 
         There is an example code:
         ```
@@ -58,7 +59,7 @@ Python Version: python3.x
 
 > cd [Your Work Directory]/weighted-isr
 
-> python weight.py [--config config.conf]
+> python3 weight.py [--config config.conf]
 
 ## For developers 
  
