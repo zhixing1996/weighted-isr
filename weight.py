@@ -20,7 +20,6 @@ def main():
     args = parser.parse_args()
     config = load_config(args.config)
     write_to_file(config.samples, config.weight_isr(), config.weight_eff())
-    # config.toy()
 
 if __name__ == "__main__":
     main()

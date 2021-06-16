@@ -36,5 +36,5 @@ def load_pickle(file_name):
 def cal_weight(m, params, ecms):
     weight = 0
     for mj in m:
-        weight += abs(line_shape(mj, params))/abs(line_shape(ecms, params))
+        weight += line_shape(mj, params)/line_shape(ecms, params)
     return weight

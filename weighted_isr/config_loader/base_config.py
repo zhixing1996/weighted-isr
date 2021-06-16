@@ -18,8 +18,11 @@ class BaseConfig(object):
     def __init__(self, file_name, share_dict=None):
         self.config = load_config(file_name, share_dict)
 
-    def __getitem__(self, key):
-        return self.config.get(key)
+    def __getitem__(self, sec, key):
+        return self.config.get(sec, key)
 
-    def __setitem__(self, key, value):
-        self.config[key] = value
+    def __setitem__(self, sec, key, val):
+        if not self.config.has_section(sec):
+            self.config.add_section(sec)
+            self.set(sec, key, value = val)
+        else: self.set(sec, key, value = val)
