@@ -12,7 +12,7 @@ KKMC.RadiationCorrection = 1;
 //KKMC.TagISR = 1;
 KKMC.TagFSR = 1;
 KKMC.ModeIndexExpXS = -2;
-KKMC.IHVP = 1;
+KKMC.IHVP = 0;
 
 //**************job options for EvtGen************************
 #include "$BESEVTGENROOT/share/BesEvtGen.txt"
