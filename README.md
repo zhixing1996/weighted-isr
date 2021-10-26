@@ -61,6 +61,8 @@ Python Version: python3.x
 
 > python3 weight.py [--config config.conf]
 
+> NOTE: directory ./pickles/ will automatically reated and files under this directory will not be updated once reated, so if changes have been make in line-shapes or m_truth, please remove this directory.
+
 ## For developers 
  
 - Fork the code with your personal github ID. See [details](https://help.github.com/articles/fork-a-repo/)
