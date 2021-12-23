@@ -67,13 +67,15 @@ Python Version: python3.x
 
 > please check examples in ./example, some points that you need to focus on is listed as bellow:
 
-1. [IHVP]: 
+1. [Vacuum polarization factor]: 
 
     1. Please set KKMC.IHVP = 0 to insure that the line shape you put in KKMC is accurately flat.
     
     2. In the cross section calculation, please set KKMC.IHVP = 1 and generate only 1 event in the center-of-mass energy you concern about to get the VP factor.
     
-    3. Please insure only "KKMC.TagFSR = 1;" is uncommented and "KKMC.TagISR = 1;" is commented to tag the FSR coming from ccbar.
+2. [ISR tag]: 
+
+    1. Please insure only "KKMC.TagFSR = 1;" is uncommented and "KKMC.TagISR = 1;" is commented to tag the FSR coming from ccbar.
 
 ## For developers 
  
