@@ -1,4 +1,5 @@
-import os
+import os, random
+from array import array
 from weighted_isr.config_loader.tools import line_shape
 
 def gen_line_shape(m, params):

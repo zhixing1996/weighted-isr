@@ -1,5 +1,8 @@
 import os
 import pickle
+from math import sqrt
+from array import array
+import random
 from .line_shape import line_shape
 
 def parse_file(file_name):
@@ -38,3 +41,50 @@ def cal_weight(m, params, ecms):
     for mj in m:
         weight += line_shape(mj, params)/line_shape(ecms, params)
     return weight
+
+def cov_gen(C, NP):
+    z, x = array('f', NP*[0.]), array('f', NP*[0.])
+    for i in range(NP):
+        z[i] = random.gauss(0, 1)
+    for i in range(NP):
+        x[i] = 0
+        for j in range(NP):
+            if j > i: continue
+            x[i] += C[i][j] * z[j]
+    return x
+    
+
+def sqrt_matrix(V, NP):
+    C = []
+    for i in range(NP):
+        tmp = []
+        for j in range(NP):
+            tmp.append(0)
+        C.append(tmp)
+    for i in range(NP):
+        Ck = 0
+        for j in range(NP):
+            if j >=i: continue
+            Ck += C[i][j] * C[i][j]
+        C[i][i] = sqrt(abs(V[i][i] - Ck))
+        for j in range(i + 1, NP):
+            Ck = 0
+            for k in range(NP):
+                if k >= i: continue
+                Ck += C[j][k] * C[j][k]
+            C[j][i] = (V[j][i] - Ck)/C[i][i]
+    return C
+
+def sampling(Nrand, params, cov_params):
+    NP = len(cov_params)
+    sqrt_cov = sqrt_matrix(cov_params, NP)
+    iloop = 0
+    params_sample = []
+    while iloop < Nrand:
+        params_new = array('f', NP*[0.])
+        params_new = cov_gen(sqrt_cov, NP)
+        for i in range(NP):
+            params_new[i] += params[i]
+        params_sample.append(params_new)
+        iloop += 1
+    return params_sample

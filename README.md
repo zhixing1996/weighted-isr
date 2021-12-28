@@ -65,7 +65,7 @@ Python Version: python3.x
 
 ## How to produce my own MC sample?
 
-> please check examples in ./example, some points that you need to focus on is listed as bellow:
+> Please check examples in ./example, some points that you need to focus on is listed as bellow:
 
 1. [Vacuum polarization factor]: 
 
@@ -76,6 +76,16 @@ Python Version: python3.x
 2. [ISR tag]: 
 
     1. Please insure only "KKMC.TagFSR = 1;" is uncommented and "KKMC.TagISR = 1;" is commented to tag the FSR coming from ccbar.
+
+## How to estimate systematic uncertainty stemmed from input line-shape?
+
+> What has done in this section:
+
+1. Sample parameters of line-shape according to the covariance matrix ([sys]: cov_params) when parameterizing the line-shape.
+
+2. Recalculate ISR correction factor and efficiency N times ([sys]: nrand) according to evenry set of new parameters.
+
+> NOTE: ONLY IF [sys]: switch = on, this section will be executed.
 
 ## For developers 
  
