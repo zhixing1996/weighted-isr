@@ -83,7 +83,7 @@ Python Version: python3.x
 
 1. Sample parameters of line-shape according to the covariance matrix ([sys]: cov_params) when parameterizing the line-shape.
 
-2. Recalculate ISR correction factor and efficiency N times ([sys]: nrand) according to evenry set of new parameters.
+2. Recalculate ISR correction factor and efficiency N times ([sys]: nrand) according to every set of new parameters.
 
 > NOTE: ONLY IF [sys]: switch = on, this section will be executed.
 
