@@ -1,6 +1,5 @@
 from .base_config import BaseConfig
 from .tools import parse_file, load_pickle, cal_weight, sampling
-import numpy as np
 
 class ConfigLoader(BaseConfig):
     """ class for loading config.conf """
