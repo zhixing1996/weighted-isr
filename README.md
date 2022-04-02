@@ -22,7 +22,7 @@ Python Version: python3.x
     4. event: m_truth in samples after selection (wrong combination events have been removed)
     5. samples_info: corresponding samples information.
     6. P.S.: how to save MC truth info?
-
+        ```
         SmartDataPtr<Event::McParticleCol> mcParticleCol(eventSvc(), "/Event/MC/McParticleCol");
 
         if (!mcParticleCol) {
@@ -100,6 +100,7 @@ Python Version: python3.x
             }
 
         }
+        ```
 
         Variables you need to save p4_mc_all, pdgid, motherid, and motheridx.
 
