@@ -1,3 +1,4 @@
+import os
 from .base_config import BaseConfig
 from .tools import parse_file, load_pickle, cal_weight, sampling
 
@@ -10,6 +11,7 @@ class ConfigLoader(BaseConfig):
         super().__init__(file_name, share_dict)
         self.samples = [int(sample) for sample in self.config.get("init", "samples").split(",")]
         self.init_isr = parse_file(self.config.get("init", "isr"))
+        os.system("rm -rf ./pickles")
         self.truth = [load_pickle(self.config.get("init", "truth").replace("sample", str(sample))) for sample in self.samples]
         self.event = [load_pickle(self.config.get("init", "event").replace("sample", str(sample))) for sample in self.samples]
         self.samples_info = parse_file(self.config.get("init", "samples_info"))

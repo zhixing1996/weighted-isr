@@ -24,9 +24,7 @@ def parse_file(file_name):
         exit()
 
 def load_pickle(file_name):
-    if not os.path.exists("./pickles/"):
-        os.system("rm -rf ./pickles")
-        os.makedirs("./pickles/")
+    if not os.path.exists("./pickles/"): os.makedirs("./pickles/")
     pickle_name = './pickles/' + file_name.split('/')[-1].split('.')[0] + '.pickle'
     if os.path.isfile(pickle_name):
         with open(pickle_name, "rb") as f:
