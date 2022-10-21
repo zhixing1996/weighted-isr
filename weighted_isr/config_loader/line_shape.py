@@ -6,3 +6,6 @@ def line_shape(x, params):
     denominator = complex(x*x - params[0]*params[0], params[0]*params[1])
     middle = numerator/denominator
     return abs(left*middle)**2
+
+def line_shape_0(x, params):
+    return params[0]/params[0]

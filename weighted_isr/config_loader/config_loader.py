@@ -16,8 +16,9 @@ class ConfigLoader(BaseConfig):
         self.event = [load_pickle(self.config.get("init", "event").replace("sample", str(sample))) for sample in self.samples]
         self.samples_info = parse_file(self.config.get("init", "samples_info"))
         self.func_params = [float(param) for param in self.config.get("weight", "func_params").split(",")]
-        self.weight_truth = [cal_weight(m_truth, self.func_params, self.samples_info[sample][0]) for sample, m_truth in zip(self.samples, self.truth)]
-        self.weight_event = [cal_weight(m_event, self.func_params, self.samples_info[sample][0]) for sample, m_event in zip(self.samples, self.event)]
+        self.func_params_0 = [float(param) for param in self.config.get("weight", "func_params_0").split(",")]
+        self.weight_truth = [cal_weight(m_truth, self.func_params, self.samples_info[sample][0], self.func_params_0) for sample, m_truth in zip(self.samples, self.truth)]
+        self.weight_event = [cal_weight(m_event, self.func_params, self.samples_info[sample][0], self.func_params_0) for sample, m_event in zip(self.samples, self.event)]
         self.nrand = 0
         self.cov_params = []
         if self.config.get("sys", "switch") == 'on':
@@ -50,8 +51,8 @@ class ConfigLoader(BaseConfig):
         print('Input parameters:\n', self.func_params)
         for irand, params in enumerate(params_new):
             print('Parameters in {}th sampling:\n{}'.format(irand, params))
-            weight_truth = [cal_weight(m_truth, params, self.samples_info[sample][0]) for sample, m_truth in zip(self.samples, self.truth)]
-            weight_event = [cal_weight(m_event, params, self.samples_info[sample][0]) for sample, m_event in zip(self.samples, self.event)]
+            weight_truth = [cal_weight(m_truth, params, self.samples_info[sample][0], self.func_params_0) for sample, m_truth in zip(self.samples, self.truth)]
+            weight_event = [cal_weight(m_event, params, self.samples_info[sample][0], self.func_params_0) for sample, m_event in zip(self.samples, self.event)]
             eff = {}
             for sample, w_truth, w_event in zip(self.samples, weight_truth, weight_event): eff[sample] = w_event/w_truth
             eff_summary[irand] = eff

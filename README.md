@@ -96,9 +96,18 @@ Python Version: python3.x
         ```
 
 2. [weight]:
-    1. func_params: line-shape function parameters.
+    1. func_params: line-shape function parameters used to weight events.
+    2. func_params_0: line-shape function parameters used to generate MC events, default: flat line-shape.
 
-> weighted_isr/config_loader/line_shape.py: line-shape function parameters.
+> weighted_isr/config_loader/line_shape.py: 
+
+> > func: line_shape
+
+> > > line-shape function parameters used to weight events.
+
+> > func: line_shape_0
+
+> > > line-shape function parameters used to generate MC events, default: flat line-shape.
 
 ## Execute
 

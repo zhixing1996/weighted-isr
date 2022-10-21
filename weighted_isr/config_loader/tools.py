@@ -3,7 +3,7 @@ import pickle
 from math import sqrt
 from array import array
 import random
-from .line_shape import line_shape
+from .line_shape import line_shape, line_shape_0
 
 def parse_file(file_name):
     dic = {}
@@ -36,10 +36,10 @@ def load_pickle(file_name):
         pickle.dump(m_j, f, protocol = pickle.HIGHEST_PROTOCOL)
     return m_j
 
-def cal_weight(m, params, ecms):
+def cal_weight(m, params, ecms, params_0 = []):
     weight = 0
     for mj in m:
-        weight += line_shape(mj, params)/line_shape(ecms, params)
+        weight += (line_shape(mj, params) * line_shape_0(ecms, params_0))/(line_shape(ecms, params) * line_shape_0(mj, params_0))
     return weight
 
 def cov_gen(C, NP):
