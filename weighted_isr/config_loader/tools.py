@@ -71,7 +71,7 @@ def sqrt_matrix(V, NP):
             Ck = 0
             for k in range(NP):
                 if k >= i: continue
-                Ck += C[j][k] * C[j][k]
+                Ck += C[j][k] * C[i][k]
             C[j][i] = (V[j][i] - Ck)/C[i][i]
     return C
 
